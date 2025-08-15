@@ -1,0 +1,19 @@
+nohup: ignoring input
+[2025-08-07 05:39:50 +0000] [15707] [INFO] Starting gunicorn 23.0.0
+[2025-08-07 05:39:50 +0000] [15707] [INFO] Listening at: http://0.0.0.0:8000 (15707)
+[2025-08-07 05:39:50 +0000] [15707] [INFO] Using worker: sync
+[2025-08-07 05:39:50 +0000] [15708] [INFO] Booting worker with pid: 15708
+[2025-08-07 06:08:39 +0000] [15707] [CRITICAL] WORKER TIMEOUT (pid:15708)
+[2025-08-07 07:21:30 +0000] [15707] [ERROR] Worker (pid:15708) was sent SIGKILL! Perhaps out of memory?
+[2025-08-07 07:23:19 +0000] [16664] [INFO] Booting worker with pid: 16664
+[2025-08-07 07:23:19 +0000] [15707] [INFO] Handling signal: hup
+[2025-08-07 07:23:20 +0000] [15707] [INFO] Hang up: Master
+[2025-08-07 07:23:54 +0000] [16671] [INFO] Booting worker with pid: 16671
+[2025-08-07 16:44:56 +0800] [16664] [INFO] Worker exiting (pid: 16664)
+[2025-08-07 08:44:56 +0000] [15707] [ERROR] Worker (pid:16664) was sent SIGTERM!
+[2025-08-08 00:39:00 +0000] [15707] [CRITICAL] WORKER TIMEOUT (pid:16671)
+[2025-08-08 00:40:50 +0000] [15707] [ERROR] Worker (pid:16671) was sent SIGKILL! Perhaps out of memory?
+[2025-08-08 00:40:53 +0000] [24735] [INFO] Booting worker with pid: 24735
+[2025-08-08 00:45:14 +0000] [15707] [CRITICAL] WORKER TIMEOUT (pid:24735)
+[2025-08-08 00:45:17 +0000] [15707] [ERROR] Worker (pid:24735) was sent SIGKILL! Perhaps out of memory?
+[2025-08-08 00:45:18 +0000] [24953] [INFO] Booting worker with pid: 24953
