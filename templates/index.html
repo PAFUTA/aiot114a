@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>首頁</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <!--header-->
+    <div class="row pt-3 bg-primary">
+        <div class="col text-center text-white">
+            <p class="bg-info logo-icon pt-3"><i class="fas fa-regular fa-feather fa-4x"></i></p>
+            <h1>英文Logo</h1>
+            <h3>中文名稱</h3>
+            <h5>標語(Slogen)</h5>
+        </div>
+    </div>
+</div>
+</body>
+</html>
