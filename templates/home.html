@@ -1,0 +1,14 @@
+<nav>
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href="#">歡迎, {{ user.username }}！</a></li>
+                <li><form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">登出</button>
+</form></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">登入</a></li>
+                <li><a href="{% url 'signup' %}">註冊</a></li>
+            {% endif %}
+        </ul>
+    </nav>
