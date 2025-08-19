@@ -1,14 +1,17 @@
 <nav>
-        <ul>
-            {% if user.is_authenticated %}
-                <li><a href="#">歡迎, {{ user.username }}！</a></li>
-                <li><form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">登出</button>
-</form></li>
-            {% else %}
-                <li><a href="{% url 'login' %}">登入</a></li>
-                <li><a href="{% url 'signup' %}">註冊</a></li>
-            {% endif %}
-        </ul>
-    </nav>
+    <ul>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'transactions_list' %}">記帳</a></li>
+            <li><a href="{% url 'categories' %}">類別管理</a></li>
+            <li><a href="{% url 'budgets' %}">預算設定</a></li>
+            <li><a href="{% url 'settings' %}">系統設定</a></li>
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background:none;border:none;color:blue;cursor:pointer;">登出</button>
+            </form>
+        {% else %}
+            <li><a href="{% url 'home' %}">登入</a></li>
+            <li><a href="{% url 'signup' %}">註冊</a></li>
+        {% endif %}
+    </ul>
+</nav>

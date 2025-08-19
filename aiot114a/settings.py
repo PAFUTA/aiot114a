@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mysite',
     'accounts',
+    'finance',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # 登入成功後導向首頁
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'home'
 
 # 登出成功後導向登出頁面
 LOGOUT_REDIRECT_URL = '/'
