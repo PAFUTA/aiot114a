@@ -12,8 +12,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -24,11 +26,8 @@ SECRET_KEY = 'django-insecure-qv*7flpz2^2hpi2avm5se%bcri73+koo0*@g4y_&1putj)204n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# 加入本機IP進入連線許可列表
-ALLOWED_HOSTS = [
-    '152.69.207.106',
-    '127.0.0.1',
-]
+ALLOWED_HOSTS = ['localhost','127.0.0.1','152.69.207.106']
+
 
 # Application definition
 
@@ -39,14 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
-    'django.contrib.humanize',
-    'debug_toolbar',
-    'compressor',
-    'crispy_forms',
-    'crispy_bootstrap5',
-    'rest_framework',
     'mysite',
+    'accounts',
+    'finance',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +51,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'aiot114a.urls'
@@ -79,6 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'aiot114a.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
@@ -88,6 +82,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -107,6 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
@@ -117,6 +113,7 @@ TIME_ZONE = 'Asia/Taipei'
 USE_I18N = True
 
 USE_TZ = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
@@ -132,47 +129,9 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# debug工具
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
 
-# crispy
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-CRISPY_TEMPLATE_PACK = "bootstrap5"
+# 登入成功後導向首頁
+LOGIN_REDIRECT_URL = 'home'
 
-# Rest API端點框架
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ]
-}
-
-# Compressor靜態檔案工具
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-]
-
-# LOG設定
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'INFO',
-    },
-    'loggers': {
-        'django.db.backends': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
-    },
-}
+# 登出成功後導向登出頁面
+LOGOUT_REDIRECT_URL = '/'
