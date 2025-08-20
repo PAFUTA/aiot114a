@@ -1,1 +1,19 @@
-<h1>記帳頁面</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>類別管理</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">主頁面</a></li>
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background:none;border:none;color:blue;cursor:pointer;">登出</button>
+            </form>
+        </ul>
+    </nav>
+    <h1>類別管理</h1>
+    <p>這裡會顯示所有交易類別，並提供新增/編輯/刪除功能。</p>
+</body>
+</html>

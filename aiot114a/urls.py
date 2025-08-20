@@ -25,5 +25,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('finance/', include('finance.urls')),
     path('', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
-    path('dashboard/', views.home_page, name='home'),
+    path('home/', views.home_page, name='home'),
 ]

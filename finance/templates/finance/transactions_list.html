@@ -1,1 +1,19 @@
-<h1>記帳頁面</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>交易紀錄</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">主頁面</a></li>
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background:none;border:none;color:blue;cursor:pointer;">登出</button>
+            </form>
+        </ul>
+    </nav>
+    <h1>交易紀錄</h1>
+    <p>這裡會顯示所有的交易紀錄。</p>
+</body>
+</html>

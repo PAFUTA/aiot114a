@@ -1,6 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User # 引入 Django 內建的使用者模型
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    theme = models.CharField(max_length=10, default='light')
+    font_size = models.CharField(max_length=10, default='medium')
+
+    def __str__(self):
+        return f"{self.user.username}'s Profile"
+
 class Transaction(models.Model):
     TRANSACTION_TYPES = (
         ('income', '收入'),

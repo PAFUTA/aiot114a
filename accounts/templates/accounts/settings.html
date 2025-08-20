@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>使用者設定</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">主頁面</a></li>
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background:none;border:none;color:blue;cursor:pointer;">登出</button>
+            </form>
+        </ul>
+    </nav>
+
+    <h1>使用者設定</h1>
+    <form method="post" action="{% url 'settings' %}">
+        {% csrf_token %}
+        
+        <h2>主題偏好</h2>
+        <input type="radio" id="light" name="theme" value="light" {% if user_profile.theme == 'light' %}checked{% endif %}>
+        <label for="light">淺色主題</label><br>
+        <input type="radio" id="dark" name="theme" value="dark" {% if user_profile.theme == 'dark' %}checked{% endif %}>
+        <label for="dark">深色主題</label><br>
+
+        <h2>字體大小</h2>
+        <input type="radio" id="small" name="font_size" value="small" {% if user_profile.font_size == 'small' %}checked{% endif %}>
+        <label for="small">小</label><br>
+        <input type="radio" id="medium" name="font_size" value="medium" {% if user_profile.font_size == 'medium' %}checked{% endif %}>
+        <label for="medium">中</label><br>
+        <input type="radio" id="large" name="font_size" value="large" {% if user_profile.font_size == 'large' %}checked{% endif %}>
+        <label for="large">大</label><br>
+
+        <br>
+        <button type="submit">儲存設定</button>
+    </form>
+</body>
+</html>

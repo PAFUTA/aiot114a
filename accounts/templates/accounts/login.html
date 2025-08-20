@@ -4,16 +4,14 @@
     <title>登入</title>
 </head>
 <body>
-    <h1>登入頁面</h1>
+    <h1>登入</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">登入</button>
     </form>
     
-    <hr>
-    
-    <p>還沒有帳號嗎？ <a href="{% url 'signup' %}">點此註冊</a></p>
+    <p>還沒有帳號嗎？ <a href="{% url 'signup' %}">註冊</a></p>
 
 </body>
 </html>
