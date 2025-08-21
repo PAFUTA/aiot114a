@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>帳戶管理</title>
+</head>
+<body>
+    <h1>帳戶管理</h1>
+
+    <div class="form-section">
+        <h2>新增帳戶</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="帳戶名稱" required>
+            <select name="account_type" required>
+                <option value="" disabled selected>選擇帳戶類型</option>
+                <option value="bank">銀行帳戶</option>
+                <option value="securities">證券帳戶</option>
+            </select>
+            <button type="submit" name="add_account">新增</button>
+        </form>
+    </div>
+
+    <hr>
+
+    <div class="list-section">
+        <h2>現有帳戶</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>名稱</th>
+                    <th>類型</th>
+                    <th>動作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for account in accounts %}
+                <tr>
+                    <td>{{ account.name }}</td>
+                    <td>{{ account.get_type_display }}</td>
+                    <td>
+                        <form method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="account_id" value="{{ account.id }}">
+                            <button type="submit" name="delete_account">移除</button>
+                        </form>
+                        
+                        <button onclick="showEditForm({{ account.id }}, '{{ account.name }}', '{{ account.type }}')">編輯</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="edit-form-container" style="display:none;">
+        <h2>編輯帳戶</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="account_id" id="edit-account-id">
+            <input type="text" name="name" id="edit-account-name" required>
+            <select name="account_type" id="edit-account-type" required>
+                <option value="bank">銀行帳戶</option>
+                <option value="securities">證券帳戶</option>
+            </select>
+            <button type="submit" name="edit_account">確認修改</button>
+            <button type="button" onclick="hideEditForm()">取消</button>
+        </form>
+    </div>
+
+    <script>
+        function showEditForm(id, name, type) {
+            document.getElementById('edit-account-id').value = id;
+            document.getElementById('edit-account-name').value = name;
+            document.getElementById('edit-account-type').value = type;
+            document.getElementById('edit-form-container').style.display = 'block';
+        }
+        function hideEditForm() {
+            document.getElementById('edit-form-container').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
